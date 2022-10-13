@@ -39,7 +39,7 @@ function Get-Dependency {
             if (((Get-LocalBucket) -notcontains $bucket) -and $bucket) {
                 warn "Bucket '$bucket' not installed. Add it with 'scoop bucket add $bucket' or 'scoop bucket add $bucket <repo>'."
             }
-            abort "Couldn't find manifest for '$AppName'$(if(!$bucket) { '.' } else { " from '$bucket' bucket." })"
+            abort "Dependency: Couldn't find manifest for '$AppName'$(if(!$bucket) { '.' } else { " from '$bucket' bucket." })"
         }
 
         $deps = @(Get-InstallationHelper $manifest $Architecture) + @($manifest.depends) | Select-Object -Unique
